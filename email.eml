@@ -1,0 +1,821 @@
+Delivered-To: tarik@carbonable.io
+Received: by 2002:a2e:9618:0:b0:300:15a5:9385 with SMTP id v24csp240918ljh;
+        Thu, 5 Dec 2024 08:39:01 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH0yoITceDe3MCCNEArMCI2gEtNw0zrXDcpMj0BAu5TancptlY99DgtiA7WJ9tr0exIidyK
+X-Received: by 2002:a05:6000:2b09:b0:382:3211:6b7e with SMTP id ffacd0b85a97d-3861bf90bc6mr2374736f8f.31.1733416741309;
+        Thu, 05 Dec 2024 08:39:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733416741; cv=none;
+        d=google.com; s=arc-20240605;
+        b=gFnXYHnBd+xtqYerbWnKUJin1625kAvibswE3oJeVBXLp8hzLn1PehNz0dU45QHM6a
+         Ak/2hTalRUoHri0i02+k9BOx8WKJbbmbzLNxOsXt2tuvn1Ym1JeZGSEbfGEHNhIQs1Xn
+         lkFaSzuTol1+Lc84K76Pb/y0hRT2GgwCygOJcv3H6b0VKO7aaOyUEnIDwTFaM4m0aRaZ
+         kPdCHLYwOHjmSK3/B0AduLJundXfRAXc/fmIP7UotL7RZJrIkWTsXmoN6a95lMjWfygV
+         F5lN4peeKK9ixc95IRhxZhRtgbG/HPAOdVvOdWRDEh58QQCyXOi12fmfxwzC/IdSKoBN
+         L9Jw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:list-unsubscribe:feedback-id:origin-messageid:subject
+         :to:from:list-unsubscribe-post:reply-to:message-id:date
+         :dkim-signature;
+        bh=W95MgfOmtmQm+krvC+H/CzYJxq8oqTlgL3/wZC/A94o=;
+        fh=fyei0DUGoA6x2KOyglIDuxa5SV2lxtM83hj4QYWqTvg=;
+        b=PV8vYy3mgWcGgTK6EnRj5LskKPm4ZHYKhOtf6/RYWy+4rnwQ4xFhLk+txKXlQp2FsJ
+         H46VVruGUsDqBz7U/qjGYYtxRO1FDhIcPytBWHGJoGSKiKcUDokdgI0y1Rfi+1Gg2k57
+         QuUsvqQqtXCZ5cIDRYBEJC9OpkItQr/47Ejyd2rjXscXonD77A32CPlEnedMYnlnVBFW
+         VSzXqyOCdUyeudUFrDUjfnHiV5u/MhHdwqQDo1cvq52s0z9C5xIsB9zJb2LAQENygIpu
+         9cgTtvRdO0mXGCKbUIWyJn0PzwNBCbN2Yei9YcskQ0AUNoxBGV2PeXjkClg87pkuZl2i
+         G83A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@nosgestesclimat.fr header.s=mail header.b=xkWJs3IH;
+       spf=pass (google.com: domain of bounces-89831014-noreply=nosgestesclimat.fr@mail.nosgestesclimat.fr designates 172.246.41.25 as permitted sender) smtp.mailfrom="bounces-89831014-noreply=nosgestesclimat.fr@mail.nosgestesclimat.fr";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nosgestesclimat.fr
+Return-Path: <bounces-89831014-noreply=nosgestesclimat.fr@mail.nosgestesclimat.fr>
+Received: from mail.nosgestesclimat.fr (mail.nosgestesclimat.fr. [172.246.41.25])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-386220b05b2si989803f8f.541.2024.12.05.08.39.01
+        for <tarik@carbonable.io>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Dec 2024 08:39:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces-89831014-noreply=nosgestesclimat.fr@mail.nosgestesclimat.fr designates 172.246.41.25 as permitted sender) client-ip=172.246.41.25;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@nosgestesclimat.fr header.s=mail header.b=xkWJs3IH;
+       spf=pass (google.com: domain of bounces-89831014-noreply=nosgestesclimat.fr@mail.nosgestesclimat.fr designates 172.246.41.25 as permitted sender) smtp.mailfrom="bounces-89831014-noreply=nosgestesclimat.fr@mail.nosgestesclimat.fr";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nosgestesclimat.fr
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nosgestesclimat.fr;
+ q=dns/txt; s=mail; bh=W95MgfOmtmQm+krvC+H/CzYJxq8oqTlgL3/wZC/A94o=;
+ h=from:reply-to:subject:date:to:mime-version:content-type:list-unsubscribe:x-csa-complaints:list-unsubscribe-post:message-id:x-sib-id:feedback-id;
+        b=xkWJs3IHW4ifkLYDrC9W17TP8Mg37JSXhY1TXQyXyxP/q/PSZayGMufq1ih+JrwwZ7toEQ2PFDqj
+        WGWAmV7wQvEfhQorvuoIV8tDu69lWugYttv+OC1lFWYRsxcvNyLZIFomam3RLtR6ymEJHRtOKRx6
+        DPYYjE5jfIucWSnZDik=
+Date: Thu, 05 Dec 2024 16:39:00 +0000
+X-sib-id: S5KHZhK0ogNIKQ4obj3IF8DwmocwHt1nely1qVN_10tcvcFbQFLPShtIUDQlZ3eC3Xz17az7ItgAa4yjzQ1GcmT-uXQtguIV5pMcG_p8rHdi4yHx7jecusAjEP0gOGydIrrE8MVhIWsTrQ-5UOBhdcsseTf9eOZKPdItYc09-gh3
+Message-Id: <202412051639.66763065949@smtp-relay.mailin.fr>
+Reply-To: <noreply@nosgestesclimat.fr>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+From: "Nos Gestes Climat" <noreply@nosgestesclimat.fr>
+X-CSA-Complaints: csa-complaints@eco.de
+To: <tarik@carbonable.io>
+Subject: Votre empreinte carbone avec Nos Gestes Climat
+Origin-messageId: <202412051639.66763065949@smtp-relay.mailin.fr>
+Feedback-ID: 172.246.41.25:2610165_-1:2610165:Sendinblue
+List-Unsubscribe: <https://r.mail.nosgestesclimat.fr/tr/un/li/ui2F_8Rxd3Mv2L29AgJxE8dbmM1EnEBrZkJ1Zk3XjGu5chrkGOw5_J50SIC_WeSwoa_Z4rsKxEWqIEa14pN90j1EkCOVb3deOCGhXDAsO8KCjeUsmVdI05vBbJzC9lfCTuX4RZa23gsAkT-RP-M3ixFiyB_CGaMp7LnFSi9neEwSFCvy2YxeIPLZVeYhyUnpatq1aaKXOVhff8hTaP3cfoh6LyfUDi2MThIxaok288opJimi6ck>
+X-Mailin-EID: ODk4MzEwMTR%2BdGFyaWtAY2FyYm9uYWJsZS5pb348MjAyNDEyMDUxNjM5LjY2NzYzMDY1OTQ5QHNtdHAtcmVsYXkubWFpbGluLmZyPn5tYWlsLm5vc2dlc3Rlc2NsaW1hdC5mcg%3D%3D
+Mime-Version:1.0
+Content-Type:multipart/alternative; boundary="--_SiB-2c7ff9cca165ef21-Part_1"
+
+----_SiB-2c7ff9cca165ef21-Part_1
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+
+[ Afficher dans le navigateur](https://r.mail.nosgestesclimat.fr/tr/mr/Aks_=
+zqLXqDoYOhhZeyP304Wj7uwPIMiULc2dBeR_M17qbJU2yI_7CXJ36n35KQXMW3X2_N0TTCnMQma=
+NprG5WR9b2VUaOtNzvbsp5Zcqusv3F7pFzGAAizIvpxqgipBEo47ap_FgoJx_B2ZIsRpsIffRUL=
+CsJAKGswOild6PsjrwQ_u_drKAP7-6M8N73qsDCMXAAekm7LHjgriaVKVOM-3nnToY1jP7B6z43=
+ZOGiopCEg)
+
+Bravo, vous avez termin=C3=A9 votre test d'empreinte =C3=A9cologique indivi=
+duelle ! =F0=9F=8E=89=C2=A0
+
+=C2=A0
+
+**=E2=98=81=EF=B8=8F Votre empreinte carbone** **annuelle** **estim=C3=A9e*=
+* est de : **8,8**
+---------------------------------------------------------------------------=
+---
+=C2=A0tonnes de CO=E2=82=82e / an
+--------------------
+
+=F0=9F=9A=99=C2=A03,8t | =F0=9F=8D=BD=C2=A02t =C2=A0| =F0=9F=8F=A0=C2=A00,6=
+t =C2=A0| =F0=9F=93=A6=C2=A01t =C2=A0| =F0=9F=8F=9B=C2=A01,5t
+
+
+**=F0=9F=92=A7 Votre empreinte eau quotidienne**estim=C3=A9e est de : **761=
+1**
+---------------------------------------------------------------------------=
+------
+**=C2=A0litres d'eau / jour**
+------------------------
+Vous pouvez retrouver le d=C3=A9tail de votre empreinte =C3=A0 tout moment =
+en suivant le lien ci-dessous :=20
+[ **=F0=9F=93=8A Retrouver ma simulation**](https://nosgestesclimat.fr/fin?=
+sid=3Da2d9fedd-7b94-41b9-8c1b-7850e1165db3&mtm_campaign=3Demail-automatise&=
+mtm_kwd=3Dfin-retrouver-simulation "Retrouver ma simulation")
+
+
+**=F0=9F=91=AF=E2=80=8D=E2=99=82=EF=B8=8F Qui a la meilleure empreinte ?**
+
+Vous avez appris des choses en faisant Nos Gestes Climat ? Invitez vos proc=
+hes =C3=A0 calculer leur empreinte puis **comparez vos r=C3=A9sultats** en =
+cr=C3=A9ant un groupe :
+
+[ **Challenger mon entourage**](https://nosgestesclimat.fr/amis?mtm_campaig=
+n=3Demail-automatise&mtm_kwd=3Dfin-challengetesamis&email=3Dtarik%40carbona=
+ble.io "Challenger mon entourage")
+
+[ Ou partager ce lien](https://nosgestesclimat.fr/?mtm_campaign=3Demail-aut=
+omatise&mtm_kwd=3Dfin-partagengc&email=3Dtarik%40carbonable.io "Partager No=
+s Gestes Climat")
+
+
+**=F0=9F=91=8A Et maintenant, place =C3=A0 l'action !=C2=A0**
+
+Le calcul de votre empreinte carbone est la premi=C3=A8re =C3=A9tape pour i=
+dentifier **les postes de r=C3=A9duction les plus efficaces** ! Pour b=C3=
+=A9n=C3=A9ficier de nos conseils pour r=C3=A9duire votre empreinte : rendez=
+-vous dans la page Actions.=20
+[ Comment r=C3=A9duire mon empreinte ?](https://nosgestesclimat.fr/actions?=
+mtm_campaign=3Demail-automatise&mtm_kwd=3Dfin-actions&email=3Dtarik@carbona=
+ble.io "Comment r=C3=A9duire mon empreinte?")
+
+
+A tr=C3=A8s vite !=C2=A0
+
+=C2=A0
+
+L'=C3=A9quipe Nos Gestes Climat
+
+**=F0=9F=93=A3 Participez =C3=A0 l'am=C3=A9lioration de Nos Gestes Climat !=
+=C2=A0**
+
+Nos Gestes Climat lance sa premi=C3=A8re communaut=C3=A9 de testeurs et tes=
+teuses !=C2=A0
+Rejoignez-la et participez =C3=A0 l=E2=80=99am=C3=A9lioration de notre site=
+ !
+
+[ **Je rejoins la communaut=C3=A9 de testeurs**](https://856c23af.sibforms.=
+com/serve/MUIFAB6KwQ2nVIoZtVeecOz7cGMqB5ucitLvm2zQM20a881PbfpM30BHb8ySwvy8Y=
+KaUfJDRhTdG_P9z_H05hM_J7y0X36VosPOhuoxPpfLq6NnR-a1AEqF5ip5WZs2TRJiUXfNalwfA=
+dylOsHp14KnMRkYKK5WwBV08wFmqNaHEncImCdYxAON7wJZgMxrY63fvqti5oH2uwGnz "Parti=
+cipez =C3=A0 l'am=C3=A9lioration de NGC !")
+
+Nos Gestes Climat
+
+155 bis avenue Pierre Brossolette, 92120, Montrouge
+
+
+Cet=C2=A0email a =C3=A9t=C3=A9 envoy=C3=A9 =C3=A0=C2=A0tarik@carbonable.io.=
+ Vous avez re=C3=A7u ce message car vous avez demand=C3=A9 =C3=A0 recevoir =
+vos r=C3=A9sultats d'empreinte carbone sur Nos Gestes Climat.=C2=A0
+
+
+[Se d=C3=A9sinscrire](https://r.mail.nosgestesclimat.fr/tr/un/Aegk9O_LZH76-=
+-u8ZNnMz1fPq9zRoCTxj2Cneu5Z9D_8B-y6qWqtCgN2nr0X6Q4PILQU1KuA60nVlrzj6HoANbxC=
+GC_GcZl9bGP1UgPiWZI9OyLMh7y0u2h1ziFDkW5B1leE3KIYaFruamAGBunlTOi5oMiRJzeguxJ=
+5kEdq6yuNHUiItlHZnOpJuaUzmyOcB37i4PDgGHt-Ccx1aLlvquR6ENnAxSC51oEzaQjbApki8C=
+bTL72MxPEtV21g8Kd8Zr6_pELWg_tE9EltmsMS1XqmSwPz8aVOQF1ouyw)
+
+
+----_SiB-2c7ff9cca165ef21-Part_1
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns=3D"http://www.w3.org/1999/xht=
+ml" xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micros=
+oft-com:office:office"><head><meta http-equiv=3D"Content-Type" content=3D"t=
+ext/html; charset=3Dutf-8"/><meta http-equiv=3D"X-UA-Compatible" content=3D=
+"IE=3Dedge"/><meta name=3D"format-detection" content=3D"telephone=3Dno"/><m=
+eta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.0"=
+/><title>Votre empreinte carbone avec Nos Gestes Climat</title><style type=
+=3D"text/css" emogrify=3D"no">#outlook a { padding:0; } .ExternalClass { wi=
+dth:100%; } .ExternalClass, .ExternalClass p, .ExternalClass span, .Externa=
+lClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; } t=
+able td { border-collapse: collapse; mso-line-height-rule: exactly; } .edit=
+able.image { font-size: 0 !important; line-height: 0 !important; } .nl2go_p=
+reheader { display: none !important; mso-hide:all !important; mso-line-heig=
+ht-rule: exactly; visibility: hidden !important; line-height: 0px !importan=
+t; font-size: 0px !important; } body { width:100% !important; -webkit-text-=
+size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; } img { o=
+utline:none; text-decoration:none; -ms-interpolation-mode: bicubic; } a img=
+ { border:none; } table { border-collapse:collapse; mso-table-lspace:0pt; m=
+so-table-rspace:0pt; } th { font-weight: normal; text-align: left; } *[clas=
+s=3D"gmail-fix"] { display: none !important; } </style><style type=3D"text/=
+css" emogrify=3D"no"> @media (max-width: 600px) { .gmx-killpill { content: =
+' \03D1';} } </style><style type=3D"text/css" emogrify=3D"no">@media (max-w=
+idth: 600px) { .gmx-killpill { content: ' \03D1';} .r0-o { border-style: so=
+lid !important; margin: 0 auto 0 auto !important; width: 100% !important } =
+.r1-i { background-color: transparent !important } .r2-c { box-sizing: bord=
+er-box !important; text-align: center !important; valign: top !important; w=
+idth: 320px !important } .r3-o { border-style: solid !important; margin: 0 =
+auto 0 auto !important; width: 320px !important } .r4-i { padding-bottom: 5=
+px !important; padding-top: 5px !important } .r5-c { box-sizing: border-box=
+ !important; display: block !important; valign: top !important; width: 100%=
+ !important } .r6-o { border-style: solid !important; width: 100% !importan=
+t } .r7-i { padding-left: 0px !important; padding-right: 0px !important } .=
+r8-c { box-sizing: border-box !important; padding-left: 10px !important; pa=
+dding-right: 10px !important; text-align: center !important; width: 100% !i=
+mportant } .r9-i { background-color: #f7fbff !important } .r10-c { box-sizi=
+ng: border-box !important; text-align: center !important; valign: top !impo=
+rtant; width: 100% !important } .r11-i { background-color: #f7fbff !importa=
+nt; color: #3b3f44 !important; padding-bottom: 20px !important; padding-lef=
+t: 15px !important; padding-right: 15px !important; padding-top: 20px !impo=
+rtant } .r12-i { color: #3b3f44 !important; padding-left: 0px !important; p=
+adding-right: 0px !important } .r13-o { border-style: solid !important; mar=
+gin: 0 auto 0 auto !important; width: 50% !important } .r14-i { color: #3b3=
+f44 !important } .r15-i { background-color: #ffffff !important; padding-lef=
+t: 0px !important; padding-right: 0px !important } .r16-c { box-sizing: bor=
+der-box !important; padding-bottom: 0px !important; padding-left: 0px !impo=
+rtant; padding-right: 0px !important; padding-top: 0px !important; text-ali=
+gn: left !important; valign: top !important; width: 100% !important } .r17-=
+c { box-sizing: border-box !important; padding-bottom: 0px !important; padd=
+ing-left: 10px !important; padding-right: 10px !important; padding-top: 5px=
+ !important; text-align: left !important; valign: top !important; width: 10=
+0% !important } .r18-c { box-sizing: border-box !important; text-align: lef=
+t !important; valign: top !important; width: 100% !important } .r19-o { bor=
+der-style: solid !important; margin: 0 auto 0 0 !important; width: 100% !im=
+portant } .r20-i { padding-bottom: 15px !important; padding-left: 10px !imp=
+ortant; padding-right: 10px !important; padding-top: 15px !important; text-=
+align: center !important } .r21-c { box-sizing: border-box !important; padd=
+ing-bottom: 5px !important; padding-left: 10px !important; padding-right: 1=
+0px !important; padding-top: 5px !important; text-align: left !important; v=
+align: top !important; width: 100% !important } .r22-o { border-style: soli=
+d !important; margin: 0 auto 0 auto !important; margin-bottom: 15px !import=
+ant; margin-top: 15px !important; width: 100% !important } .r23-i { text-al=
+ign: center !important } .r24-r { background-color: #4949ba !important; bor=
+der-color: #4949ba !important; border-radius: 100px !important; border-widt=
+h: 0px !important; box-sizing: border-box; height: initial !important; padd=
+ing-bottom: 12px !important; padding-left: 5px !important; padding-right: 5=
+px !important; padding-top: 12px !important; text-align: center !important;=
+ width: 100% !important } .r25-i { background-color: #ffffff !important; pa=
+dding-bottom: 0px !important; padding-left: 0px !important; padding-right: =
+0px !important; padding-top: 0px !important } .r26-i { padding-left: 10px !=
+important; padding-right: 10px !important } .r27-c { box-sizing: border-box=
+ !important; padding-bottom: 0px !important; padding-top: 0px !important; t=
+ext-align: left !important; valign: top !important; width: 100% !important =
+} .r28-i { background-color: #ffffff !important; padding-bottom: 20px !impo=
+rtant; padding-left: 0px !important; padding-right: 0px !important; padding=
+-top: 0px !important } .r29-o { border-style: solid !important; margin: 0 a=
+uto 0 auto !important; margin-bottom: 5px !important; margin-top: 5px !impo=
+rtant; width: 100% !important } .r30-r { background-color: #ffffff !importa=
+nt; border-color: #4949ba !important; border-radius: 100px !important; bord=
+er-width: 2px !important; box-sizing: border-box; height: initial !importan=
+t; padding-bottom: 12px !important; padding-top: 12px !important; text-alig=
+n: center !important; width: 100% !important } .r31-o { border-style: solid=
+ !important; margin: 0 auto 0 auto !important; margin-bottom: 15px !importa=
+nt; margin-top: 0px !important; width: 100% !important } .r32-r { backgroun=
+d-color: #ffffff !important; border-color: #ffffff !important; border-radiu=
+s: 100px !important; border-width: 0px !important; box-sizing: border-box; =
+height: initial !important; padding-bottom: 12px !important; padding-top: 2=
+px !important; text-align: center !important; width: 100% !important } .r33=
+-c { box-sizing: border-box !important; padding-bottom: 5px !important; pad=
+ding-top: 15px !important; text-align: left !important; valign: top !import=
+ant; width: 100% !important } .r34-r { background-color: #ffffff !important=
+; border-color: #ffffff !important; border-radius: 100px !important; border=
+-width: 0px !important; box-sizing: border-box; height: initial !important;=
+ padding-bottom: 12px !important; padding-top: 12px !important; text-align:=
+ center !important; width: 100% !important } .r35-c { box-sizing: border-bo=
+x !important; padding-bottom: 15px !important; padding-top: 15px !important=
+; text-align: left !important; valign: top !important; width: 100% !importa=
+nt } .r36-o { background-image: url('https://img.mailinblue.com/2610165/ima=
+ges/content_library/original/66e15dfb57fb927214d6051a.png') !important; bac=
+kground-size: auto !important; border-style: solid !important; margin: 0 au=
+to 0 auto !important; margin-bottom: 0px !important; margin-top: 0px !impor=
+tant; width: 100% !important } .r37-i { padding-bottom: 20px !important; pa=
+dding-left: 15px !important; padding-right: 15px !important; padding-top: 3=
+0px !important } .r38-o { border-style: solid !important; margin: 0 auto 0 =
+0 !important; margin-bottom: 15px !important; width: 100% !important } .r39=
+-i { padding-bottom: 0px !important; padding-left: 0px !important; padding-=
+right: 0px !important; padding-top: 0px !important; text-align: center !imp=
+ortant } .r40-i { padding-top: 0px !important; text-align: center !importan=
+t } .r41-r { background-color: #4949ba !important; border-color: #4949ba !i=
+mportant; border-radius: 100px !important; border-width: 0px !important; bo=
+x-sizing: border-box; height: initial !important; padding-bottom: 12px !imp=
+ortant; padding-top: 12px !important; text-align: center !important; width:=
+ 100% !important } .r42-c { box-sizing: border-box !important; color: #3b3f=
+44 !important; padding-bottom: 0px !important; padding-top: 15px !important=
+; text-align: center !important; valign: top !important; width: 100% !impor=
+tant } .r43-c { box-sizing: border-box !important; color: #3b3f44 !importan=
+t; padding-bottom: 0px !important; padding-top: 10px !important; text-align=
+: center !important; valign: top !important; width: 100% !important } .r44-=
+c { box-sizing: border-box !important; color: #3b3f44 !important; padding-b=
+ottom: 10px !important; padding-top: 10px !important; text-align: center !i=
+mportant; valign: top !important; width: 100% !important } .r45-i { color: =
+#3b3f44 !important; padding-bottom: 10px !important; padding-top: 10px !imp=
+ortant } body { -webkit-text-size-adjust: none } .nl2go-responsive-hide { d=
+isplay: none } .nl2go-body-table { min-width: unset !important } .mobshow {=
+ height: auto !important; overflow: visible !important; max-height: unset !=
+important; visibility: visible !important } .resp-table { display: inline-t=
+able !important } .magic-resp { display: table-cell !important } } </style>=
+<!--[if !mso]><!--><style type=3D"text/css" emogrify=3D"no">@import url("ht=
+tps://fonts.googleapis.com/css2?family=3DDM Sans"); @import url("https://fo=
+nts.googleapis.com/css2?family=3DDM+Sans"); </style><!--<![endif]--><style =
+type=3D"text/css">p, h1, h2, h3, h4, ol, ul, li { margin: 0; } .nl2go-defau=
+lt-textstyle { color: #3b3f44; font-family: DM Sans, arial; font-size: 16px=
+; line-height: 1.5; word-break: break-word } .default-button { color: #ffff=
+ff; font-family: DM Sans, arial; font-size: 16px; font-style: normal; font-=
+weight: bold; line-height: 1.15; text-decoration: none; word-break: break-w=
+ord } a, a:link { color: #4949ba; text-decoration: underline } .default-hea=
+ding1 { color: #1F2D3D; font-family: DM Sans, arial; font-size: 36px; word-=
+break: break-word } .default-heading2 { color: #1F2D3D; font-family: DM San=
+s, arial; font-size: 32px; word-break: break-word } .default-heading3 { col=
+or: #1F2D3D; font-family: DM Sans, arial; font-size: 24px; word-break: brea=
+k-word } .default-heading4 { color: #1F2D3D; font-family: DM Sans, arial; f=
+ont-size: 18px; word-break: break-word } a[x-apple-data-detectors] { color:=
+ inherit !important; text-decoration: inherit !important; font-size: inheri=
+t !important; font-family: inherit !important; font-weight: inherit !import=
+ant; line-height: inherit !important; } .no-show-for-you { border: none; di=
+splay: none; float: none; font-size: 0; height: 0; line-height: 0; max-heig=
+ht: 0; mso-hide: all; overflow: hidden; table-layout: fixed; visibility: hi=
+dden; width: 0; } </style><!--[if mso]><xml> <o:OfficeDocumentSettings> <o:=
+AllowPNG/> <o:PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings=
+> </xml><![endif]--><style type=3D"text/css">a:link{color: #4949ba; text-de=
+coration: underline;}</style></head><body bgcolor=3D"#f7fbff" text=3D"#3b3f=
+44" link=3D"#4949ba" yahoo=3D"fix" style=3D"background-color: #f7fbff; padd=
+ing-bottom: 0px; padding-top: 10px;"><img width=3D"1" height=3D"1" src=3D"h=
+ttps://r.mail.nosgestesclimat.fr/tr/op/tRry3q-XRhh_JMrNGlRtK7TnDiac3UcOAap9=
+qyX7gqwWe55bE6fTfckFX9cQJ1xQp8_DGoyLZmC82KNPrhbagdTINuOgdK6Nx796MNKLkbxxHNn=
+gWK96vZu5lr9RirbhaXrgGwBg9m-yx9s82FNZ_5Z9BoIEqYDkMkMd8cTzuenv0o9ihGh2YszGUV=
+NivrAuWcFaxwIHhG4hB8c04TrQXGen2hGPlg" style=3D"display:none"/><table cellpa=
+dding=3D"0" border=3D"0" cellspacing=3D"0" style=3D" mso-hide: all; display=
+: none;"><tbody><tr><td>Alors, c&#39;est quoi votre empreinte carbone ?</td=
+></tr></tbody></table> <table cellspacing=3D"0" cellpadding=3D"0" border=3D=
+"0" role=3D"presentation" class=3D"nl2go-body-table" width=3D"100%" style=
+=3D"background-color: #f7fbff; width: 100%;"><tbody><tr><td> <table cellspa=
+cing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"10=
+0%" align=3D"center" class=3D"r0-o" style=3D"table-layout: fixed; width: 10=
+0%;"><tbody><tr><td valign=3D"top" class=3D"r1-i" style=3D"background-color=
+: transparent;"> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" ro=
+le=3D"presentation" width=3D"600" align=3D"center" class=3D"r3-o" style=3D"=
+table-layout: fixed;"><tbody><tr><td class=3D"r4-i" style=3D"padding-bottom=
+: 5px; padding-top: 5px;"> <table width=3D"100%" cellspacing=3D"0" cellpadd=
+ing=3D"0" border=3D"0" role=3D"presentation"><tbody><tr><th width=3D"100%" =
+valign=3D"top" class=3D"r5-c" style=3D"font-weight: normal;"> <table cellsp=
+acing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"1=
+00%" class=3D"r6-o" style=3D"table-layout: fixed; width: 100%;"><tbody><tr>=
+<td valign=3D"top" class=3D"r7-i" style=3D"padding-left: 10px; padding-righ=
+t: 10px;"> <table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" role=3D"presentation"><tbody><tr><td class=3D"r8-c nl2go-default-tex=
+tstyle" align=3D"center" style=3D"color: #3b3f44; font-family: DM Sans,aria=
+l; font-size: 16px; word-break: break-word; line-height: 1; padding-left: 3=
+0px; padding-right: 30px; text-align: center;"> <div><p style=3D"margin: 0;=
+"><a href=3D"https://r.mail.nosgestesclimat.fr/tr/cl/DqmPkb2agNjz7HanFNJXOl=
+Jb39p-R9aaCP1FdGiRASCsSCeQONWZoOXYO-HEsdCBh4FTtUF0NxKtkBmkDkOrrzW4bjEvY5ciV=
+Mq9zfW9OZocR6qlqNZAbK5eRVTiqjq6Sw3XCcIa-SPyI8d5Z3vvGxubXsM7MMXYFXIwwvfDAp2s=
+Pyv5t7uGeOKA5QWju8vXd98b5e2RPJbe6bX2KpFlscbL-o_i6n8aCcmvxZYng6gaiAhtoDwGOM0=
+TrQJyGJ1O0OGU0HPkrl-z6UbMgQTkMvECxNInc8H8nCY___YrgqhB5LBFa1t6c5l6yGtsdEJhiH=
+mZIddv72uqK80P3x2bkfpSlTlHLwlyBIw6cojd_V3je37xbieW1cKr0A-n-WUolxsWchS194tcA=
+nB4KRtvlqF9itO7Rykr9DSwuf3OHruDSuqtezob9FUW0Uk46QlIS_jNoReFwqlYZi1OCVs6xLMt=
+LI8Z3V2cqre8X6KIgCqgbiOFF20TjJ4b4vmTpsstYFr_EPFthiaRDFoipkE6rmJz-_GiuOHYxrC=
+0bQqS68cRJQWu8q1-1fyneOR3Z-JAOzOL1qu-rJuDPf8Epth6d98HgZJxlRf1O5osH49nuCw" s=
+tyle=3D"color: #4949ba; text-decoration: underline;"> <span style=3D"font-f=
+amily: arial,helvetica,sans-serif; font-size: 12px; text-decoration: underl=
+ine;"> Afficher dans le navigateur</span></a></p></div> </td> </tr></tbody>=
+</table></td> </tr></tbody></table></th> </tr></tbody></table></td> </tr></=
+tbody></table></td> </tr></tbody></table><table cellspacing=3D"0" cellpaddi=
+ng=3D"0" border=3D"0" role=3D"presentation" width=3D"600" align=3D"center" =
+class=3D"r3-o" style=3D"table-layout: fixed; width: 600px;"><tbody><tr><td =
+valign=3D"top" class=3D"r9-i" style=3D"background-color: #f7fbff;"> <table =
+cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" widt=
+h=3D"100%" align=3D"center" class=3D"r0-o" style=3D"table-layout: fixed; wi=
+dth: 100%;"><tbody><tr><td class=3D"r11-i" style=3D"background-color: #f7fb=
+ff; color: #3b3f44; font-family: DM Sans; font-size: 16px; padding-bottom: =
+20px; padding-top: 20px;"> <table width=3D"100%" cellspacing=3D"0" cellpadd=
+ing=3D"0" border=3D"0" role=3D"presentation"><tbody><tr><th width=3D"100%" =
+valign=3D"top" class=3D"r5-c" style=3D"font-weight: normal;"> <table cellsp=
+acing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"1=
+00%" class=3D"r6-o" style=3D"table-layout: fixed; width: 100%;"><tbody><tr>=
+<td valign=3D"top" class=3D"r12-i" style=3D"color: #3b3f44; font-family: DM=
+ Sans; font-size: 16px; padding-left: 15px; padding-right: 15px;"> <table w=
+idth=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"pres=
+entation"><tbody><tr><td class=3D"r10-c" align=3D"center"> <table cellspaci=
+ng=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"171"=
+ class=3D"r13-o" style=3D"table-layout: fixed; width: 171px;"><tbody><tr><t=
+d class=3D"r14-i" style=3D"color: #3b3f44; font-family: arial,helvetica,san=
+s-serif; font-size: 0px; line-height: 0px;"> <a href=3D"https://r.mail.nosg=
+estesclimat.fr/tr/cl/-tbKk0vKZcJzfXPfJse-jsgMkO-f3UDeZq_t3ICG1vEtd9UhqmmWMH=
+SPTH2kn7AJDjIvz5AU9NklEI-WP431blCGkB2ZZB97Bfrr-OewCrbkv1wcweZgCmhV8hMNCWUFY=
+lE2Ri2e3fAcrYyKfQ4MT-mJBlKBlXPtn5fCKtJBucLQdeGBKdaqpf8hjBqHl9Ur_FPwpQTs4im4=
+fWvuo31WhtsIU_oZF9ScqxLJs60wu5ji9oJa4HfPtGjg5fePM1LoFMZAaNp5Cupokql4qVISqmm=
+RbnqOzEorA5EHIFP5vImgpn6su80iESWMpirJ-slOc_zMGY7-001H_UVS5EPfK1Ij-NeFYhSSWz=
+lQ" target=3D"_blank" style=3D"color: #4949ba; text-decoration: underline;"=
+> <img src=3D"https://r.mail.nosgestesclimat.fr/im/2610165/a6841dd73b103be1=
+abd894d329ee6a224b26e6f53d24e68cef1fea49a3af77cd.png?e=3DfL-8GEVWOLjoi0-549=
+SkO5D00mX78YVrJyd396gvZa7V46jRByhDMB04exi0ysD-NpgutGypVuKH9XQQeV4gefFp7PhEh=
+9G-9mUWkLgjhN5ocJs3bAmoJjiEM2bePcBaoI6Wyqlz_iZspwJVOqBzz4fjx2ADmM1tHCz4Nj4v=
+9WKTpV3_il8MmgihvwNhz6cn0R9INUN5av7KmWyQD-_J0ArgcS5T8SzWVcwu4xIv2AibxdheQ1m=
+HHjiMUi0E7xbj1-IqWhlAW3n0ae-ndwbxUxhYO7GLG2rz8ShX85hbqqv5jwyr4E5Wvj0OCGTv0g=
+S7QA" width=3D"171" title=3D"Aller sur Nos Gestes Climat" border=3D"0" styl=
+e=3D"display: block; width: 100%;"/></a> </td> </tr></tbody></table></td> <=
+/tr></tbody></table></td> </tr></tbody></table></th> </tr></tbody></table><=
+/td> </tr></tbody></table><table cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" role=3D"presentation" width=3D"100%" align=3D"center" class=3D"r0-o"=
+ style=3D"background-color: #ffffff; table-layout: fixed; width: 100%;"><tb=
+ody><tr><th width=3D"100%" valign=3D"top" class=3D"r5-c" style=3D"backgroun=
+d-color: #ffffff; font-weight: normal;"> <table cellspacing=3D"0" cellpaddi=
+ng=3D"0" border=3D"0" role=3D"presentation" width=3D"100%" class=3D"r6-o" s=
+tyle=3D"table-layout: fixed; width: 100%;"><tbody><tr><td valign=3D"top" cl=
+ass=3D"r15-i" style=3D"background-color: #ffffff; padding-left: 10px; paddi=
+ng-right: 10px;"> <table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0"=
+ border=3D"0" role=3D"presentation"><tbody><tr><td class=3D"r16-c nl2go-def=
+ault-textstyle" align=3D"left" style=3D"color: #3b3f44; font-family: DM San=
+s,arial; font-size: 16px; line-height: 1.5; word-break: break-word; padding=
+-bottom: 5px; padding-left: 10px; padding-right: 10px; padding-top: 15px; t=
+ext-align: left; valign: top;"> <div><p style=3D"margin: 0;"><span style=3D=
+"font-family: arial;">Bravo, vous avez termin=C3=A9 votre test d&#39;emprei=
+nte =C3=A9cologique individuelle ! =F0=9F=8E=89=C2=A0</span></p><p style=3D=
+"margin: 0; text-align: center;">=C2=A0</p><p style=3D"margin: 0; text-alig=
+n: center;"><span style=3D"font-family: arial;"><strong>=E2=98=81=EF=B8=8F =
+Votre empreinte carbone</strong> <strong>annuelle</strong> <strong>estim=C3=
+=A9e</strong> est de :</span></p></div> </td> </tr><tr><td class=3D"r17-c n=
+l2go-default-textstyle" align=3D"left" style=3D"color: #3b3f44; font-family=
+: DM Sans,arial; font-size: 16px; word-break: break-word; line-height: 1; p=
+adding-left: 10px; padding-right: 10px; padding-top: 5px; text-align: left;=
+ valign: top; word-wrap: break-word;"> <div><h2 class=3D"default-heading2" =
+style=3D"margin: 0; color: #1f2d3d; font-family: DM Sans,arial; font-size: =
+32px; word-break: break-word; text-align: center;"><span style=3D"font-fami=
+ly: arial; font-size: 36px;"><strong>8,8</strong></span><br/><span style=3D=
+"font-family: arial; font-size: 16px;">=C2=A0tonnes de CO=E2=82=82e / an</s=
+pan></h2></div> </td> </tr><tr><td class=3D"r18-c" align=3D"left"> <table c=
+ellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=
+=3D"100%" class=3D"r19-o" style=3D"table-layout: fixed; width: 100%;"><tbod=
+y><tr><td align=3D"center" valign=3D"top" class=3D"r20-i nl2go-default-text=
+style" style=3D"color: #3b3f44; font-family: DM Sans,arial; font-size: 16px=
+; word-break: break-word; line-height: 1.5; padding-bottom: 15px; padding-l=
+eft: 10px; padding-right: 10px; padding-top: 15px; text-align: center; word=
+-wrap: break-word;"> <div><p style=3D"margin: 0; text-align: center;"><span=
+ style=3D"color: #a2d2fd; font-family: arial; font-size: 16px;">=F0=9F=9A=
+=99=C2=A03,8t</span><span style=3D"font-family: arial; font-size: 16px;"> |=
+</span><span style=3D"color: #fda354; font-family: arial; font-size: 16px;"=
+> =F0=9F=8D=BD=C2=A02t</span><span style=3D"font-family: arial; font-size: =
+16px;"> =C2=A0| </span><span style=3D"color: #6bc47b; font-family: arial; f=
+ont-size: 16px;">=F0=9F=8F=A0=C2=A00,6t</span><span style=3D"font-family: a=
+rial; font-size: 16px;"> =C2=A0| </span><span style=3D"color: #f9cd49; font=
+-family: arial; font-size: 16px;">=F0=9F=93=A6=C2=A01t</span><span style=3D=
+"font-family: arial; font-size: 16px;"> =C2=A0| </span><span style=3D"color=
+: #9e8ef5; font-family: arial; font-size: 16px;">=F0=9F=8F=9B=C2=A01,5t</sp=
+an></p></div> </td> </tr></tbody></table></td> </tr><tr><td class=3D"r16-c =
+nl2go-default-textstyle" align=3D"left" style=3D"color: #3b3f44; font-famil=
+y: DM Sans,arial; font-size: 16px; line-height: 1.5; word-break: break-word=
+; padding-bottom: 5px; padding-left: 10px; padding-right: 10px; padding-top=
+: 15px; text-align: left; valign: top;"> <div><p style=3D"margin: 0; text-a=
+lign: center;"><span style=3D"font-family: arial;"><strong>=F0=9F=92=A7 Vot=
+re empreinte eau quotidienne </strong>estim=C3=A9e est de :</span></p></div=
+> </td> </tr><tr><td class=3D"r17-c nl2go-default-textstyle" align=3D"left"=
+ style=3D"color: #3b3f44; font-family: DM Sans,arial; font-size: 16px; word=
+-break: break-word; line-height: 1; padding-left: 10px; padding-right: 10px=
+; padding-top: 5px; text-align: left; valign: top;"> <div><h2 class=3D"defa=
+ult-heading2" style=3D"margin: 0; color: #1f2d3d; font-family: DM Sans,aria=
+l; font-size: 32px; word-break: break-word; text-align: center;"><span styl=
+e=3D"color: #4949ba;"><strong>7611</strong></span><br/><span style=3D"color=
+: #4949ba; font-family: arial; font-size: 16px;"><strong>=C2=A0litres d&#39=
+;eau / jour</strong></span></h2></div> </td> </tr><tr><td class=3D"r21-c nl=
+2go-default-textstyle" align=3D"left" style=3D"color: #3b3f44; font-family:=
+ DM Sans,arial; font-size: 16px; line-height: 1.5; word-break: break-word; =
+padding-bottom: 5px; padding-left: 10px; padding-right: 10px; padding-top: =
+5px; text-align: left; valign: top;"> <div><p style=3D"margin: 0;"><span st=
+yle=3D"font-family: arial;">Vous pouvez retrouver le d=C3=A9tail de votre e=
+mpreinte =C3=A0 tout moment en suivant le lien ci-dessous :</span></p></div=
+> </td> </tr><tr><td class=3D"r10-c" align=3D"center"> <table cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"272" c=
+lass=3D"r22-o" style=3D"table-layout: fixed; width: 272px;"><tbody><tr clas=
+s=3D"nl2go-responsive-hide"><td height=3D"15" style=3D"font-size: 15px; lin=
+e-height: 15px;">=C2=AD</td> </tr><tr><td height=3D"18" align=3D"center" va=
+lign=3D"top" class=3D"r23-i nl2go-default-textstyle" style=3D"color: #3b3f4=
+4; font-family: DM Sans,arial; font-size: 16px; line-height: 1.5; word-brea=
+k: break-word;">  <!--[if mso]> <v:roundrect xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https=
+://r.mail.nosgestesclimat.fr/tr/cl/ErBI413lgSIq2oySnuXcQtay5EYLlduovKaKx54s=
+2a9tWKwOo7XZ9O2REXQ-KD1bUsC-2u0mIi_FkR4puczj2EvyrDlT9oA7dUnjw2QUTLJqknnDQfs=
+U6MGph1mgFWGnmdZMqpMJwAQYFB9WPsl9pyU17DFR2-2ogtmC4u9mfHA79WPOZQks-j_ofAtfmG=
+LbNg-9F53PspwjJ2EuGhiM114oJyqyeF9Aovdkg-k_H2UzGHQXG5xopfz0BycY36Y_LcwejBnzm=
+ax1Fr7PxMHTSjkQPLGAxa9R6xNSXjycjGw_rcRdyjgcBDAmN-SvQxbTruZHOBwycvvHr8o3jU4e=
+OPb_FREMP_rmQcTkiBXZlCDbiwmNCiTzya7t3WHHgS2-ylIFR9UlVtXVQzBAa9hD_P_m5t76xbv=
+lg1L7sq-65osUhYU3JJzgBw" style=3D"v-text-anchor:middle; height: 41px; width=
+: 271px;" arcsize=3D"50%" fillcolor=3D"#4949ba" strokecolor=3D"#4949ba" str=
+okeweight=3D"1px" data-btn=3D"1"> <w:anchorlock> </w:anchorlock> <v:textbox=
+ inset=3D"0,0,0,0"> <div style=3D"display:none;"> <center class=3D"default-=
+button"><span><span style=3D"font-family:arial;"><strong>=F0=9F=93=8A Retro=
+uver ma simulation</strong></span></span></center> </div> </v:textbox> </v:=
+roundrect> <![endif]-->  <!--[if !mso]><!-- --> <a href=3D"https://r.mail.n=
+osgestesclimat.fr/tr/cl/VhcDejebmaqqoMUtNGuslAbTYSi66F2HgRqbFqJrcZZv9U-s9ts=
+7x-VqRrWFEg8nQTjrEb5_qzy4NB_JHrgRNzIhC-W9meOO6HxIAbaZoNbFxjIj2YO67ama2jRu3y=
+QNoSdYg1_4_zmlcKOCUbqM1C_7r6r9j9DoL1DyRk9nLVgXx3_TXFFFTGdto55oHqLccY52VBXlj=
+wR3aINZtZGLVrciEzSHF7rI40si7R13p_s2VIg0sTSnIyRrczYeoL3hf3nZ4hmMVxzfz0iT7Ymk=
+uu3IZYOiq2x_MbKn7GJ88dGOvoQpmG6JrYJ2kCgT-ATuz5TvOwd5tz6-DPaM0sZ3GMzq2QX5BwV=
+-4C_i9TArVD_I-rQqhBZMELKy673oTX-i18507mANmQJk3Gk-gHlqMrgjJwX2G9uIJR6n_NbSy8=
+FVmUkUx3PKUw" class=3D"r24-r default-button" target=3D"_blank" title=3D"Ret=
+rouver ma simulation" data-btn=3D"1" style=3D"font-style: normal; font-weig=
+ht: bold; line-height: 1.15; text-decoration: none; word-break: break-word;=
+ border-style: solid; word-wrap: break-word; display: block; -webkit-text-s=
+ize-adjust: none; background-color: #4949ba; border-color: #4949ba; border-=
+radius: 100px; border-width: 0px; color: #ffffff; font-family: DM Sans, ari=
+al; font-size: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; pad=
+ding-left: 5px; padding-right: 5px; padding-top: 12px; width: 262px;"> <spa=
+n><span style=3D"font-family: arial;"><strong>=F0=9F=93=8A Retrouver ma sim=
+ulation</strong></span></span></a> <!--<![endif]--> </td> </tr><tr class=3D=
+"nl2go-responsive-hide"><td height=3D"15" style=3D"font-size: 15px; line-he=
+ight: 15px;">=C2=AD</td> </tr></tbody></table></td> </tr></tbody></table></=
+td> </tr></tbody></table></th> </tr></tbody></table><table cellspacing=3D"0=
+" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"100%" align=
+=3D"center" class=3D"r0-o" style=3D"table-layout: fixed; width: 100%;"><tbo=
+dy><tr><td class=3D"r25-i" style=3D"background-color: #ffffff; padding-top:=
+ 20px;"> <table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" role=3D"presentation"><tbody><tr><th width=3D"100%" valign=3D"top" c=
+lass=3D"r5-c" style=3D"font-weight: normal;"> <table cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0" role=3D"presentation" width=3D"100%" class=3D"r6=
+-o" style=3D"table-layout: fixed; width: 100%;"><tbody><tr><td valign=3D"to=
+p" class=3D"r26-i" style=3D"padding-left: 25px; padding-right: 25px;"> <tab=
+le width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"=
+presentation"><tbody><tr><td class=3D"r27-c nl2go-default-textstyle" align=
+=3D"left" style=3D"color: #3b3f44; font-family: DM Sans,arial; font-size: 1=
+6px; line-height: 1.5; word-break: break-word; text-align: left; valign: to=
+p;"> <div><p style=3D"margin: 0;"><span style=3D"font-family: arial;"><stro=
+ng>=F0=9F=91=AF=E2=80=8D=E2=99=82=EF=B8=8F Qui a la meilleure empreinte ?</=
+strong></span></p><p style=3D"margin: 0;"><span style=3D"font-family: arial=
+;">Vous avez appris des choses en faisant Nos Gestes Climat ? Invitez vos p=
+roches =C3=A0 calculer leur empreinte puis </span><span style=3D"color: #49=
+49ba; font-family: arial;"><strong>comparez vos r=C3=A9sultats</strong></sp=
+an><span style=3D"font-family: arial;"> en cr=C3=A9ant un groupe :</span></=
+p></div> </td> </tr></tbody></table></td> </tr></tbody></table></th> </tr><=
+/tbody></table></td> </tr></tbody></table><table cellspacing=3D"0" cellpadd=
+ing=3D"0" border=3D"0" role=3D"presentation" width=3D"100%" align=3D"center=
+" class=3D"r0-o" style=3D"table-layout: fixed; width: 100%;"><tbody><tr><td=
+ class=3D"r28-i" style=3D"background-color: #ffffff; padding-bottom: 20px;"=
+> <table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" ro=
+le=3D"presentation"><tbody><tr><th width=3D"100%" valign=3D"top" class=3D"r=
+5-c" style=3D"font-weight: normal;"> <table cellspacing=3D"0" cellpadding=
+=3D"0" border=3D"0" role=3D"presentation" width=3D"100%" class=3D"r6-o" sty=
+le=3D"table-layout: fixed; width: 100%;"><tbody><tr><td valign=3D"top" clas=
+s=3D"r26-i" style=3D"padding-left: 25px; padding-right: 25px;"> <table widt=
+h=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"present=
+ation"><tbody><tr><td class=3D"r10-c" align=3D"center"> <table cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"247" c=
+lass=3D"r29-o" style=3D"table-layout: fixed; width: 247px;"><tbody><tr clas=
+s=3D"nl2go-responsive-hide"><td height=3D"5" style=3D"font-size: 5px; line-=
+height: 5px;">=C2=AD</td> </tr><tr><td height=3D"18" align=3D"center" valig=
+n=3D"top" class=3D"r23-i nl2go-default-textstyle" style=3D"color: #3b3f44; =
+font-family: DM Sans,arial; font-size: 16px; line-height: 1.5; word-break: =
+break-word;">  <!--[if mso]> <v:roundrect xmlns:v=3D"urn:schemas-microsoft-=
+com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https://=
+r.mail.nosgestesclimat.fr/tr/cl/ql2W-4kOdvcSV7_apdqNB3uNjES_nWSu_fVJcjI407g=
+JBPA24_nosnwcnI9CuEsVoLN78XKLImksXoiKaLXvbnAwML7JgaevLNjeOrkUOPmtRN5RtkdV1O=
+ttmL2v--BCSWRwsqZI2q_8ZlFc_qifnAdO40x2yUwSLYsKna0cpx36WUtMv_36-4Pz1YAap08oN=
+yS1M2rlsOZZXP5JLQOlBo96q5sp85Qfl8I4UMdp8nCBF7-c5_E1ExWtGcY2YA9blbhpNtmOJYBd=
+gAMikqJUa0HepyOHfIMXrRqI3PBMgMquoPKVFGRvXB82zKKMgV2ZdFRqam_byhKC8RlW-elLNc7=
+my76E3uDnDX0RZSvzur7G-DTErzFJm2iWtePtixiBemOy8fH9nJWbDBQfPXENiaGLxRxuH4C20r=
+A" style=3D"v-text-anchor:middle; height: 44px; width: 249px;" arcsize=3D"5=
+0%" fillcolor=3D"#ffffff" strokecolor=3D"#4949ba" strokeweight=3D"2px" data=
+-btn=3D"2"> <w:anchorlock> </w:anchorlock> <v:textbox inset=3D"0,0,0,0"> <d=
+iv style=3D"display:none;"> <center class=3D"default-button"><span><span st=
+yle=3D"color:#4949ba;font-family:arial;"><strong>Challenger mon entourage</=
+strong></span></span></center> </div> </v:textbox> </v:roundrect> <![endif]=
+-->  <!--[if !mso]><!-- --> <a href=3D"https://r.mail.nosgestesclimat.fr/tr=
+/cl/OK9CU9nOqg0uhLJQD--YBmrYV0X-4V3Heb_IP-9YL8w5hUsctl1afL24_5Yt3GBtipL_edD=
+m1C9vEq6-gLnM7GVhBgV2ZpHdf6dD068EpQLENyVpc1NeIbLNIzyYggPms2xY6Ke_LtlQOGE977=
+KKitB3IyRAXQWRVNu39q3zG_iBGU_zb4WQqPYjBFIe9SG6DzO5_5MpcLQODh9HmAoJgyFp8oD7m=
+f0uzadG9RYa8WHugVo8ReBDN5T5GrvUL_ilZYpU8YPt0NFoOS0v16KbLTFeV-40RT8APY7a8hXy=
+OW3wgIloHbblztbUdYNO0TUFTDHb0HGgg_vs-FpQ_Hv7EI_N24jQ0IRjhoGRug-7CO7gajgZ2oO=
+82uszDk0JhF1AsJmtE3_bxeOaoRdaxLCWZ1IYbQFpiYLiZhQ" class=3D"r30-r default-bu=
+tton" target=3D"_blank" title=3D"Challenger mon entourage" data-btn=3D"2" s=
+tyle=3D"font-style: normal; font-weight: bold; line-height: 1.15; text-deco=
+ration: none; word-break: break-word; border-style: solid; word-wrap: break=
+-word; display: block; -webkit-text-size-adjust: none; background-color: #f=
+fffff; border-color: #4949ba; border-radius: 100px; border-width: 2px; colo=
+r: #ffffff; font-family: DM Sans, arial; font-size: 16px; height: 18px; mso=
+-hide: all; padding-bottom: 12px; padding-top: 12px; width: 243px;"> <span>=
+<span style=3D"color: #4949ba; font-family: arial;"><strong>Challenger mon =
+entourage</strong></span></span></a> <!--<![endif]--> </td> </tr><tr class=
+=3D"nl2go-responsive-hide"><td height=3D"5" style=3D"font-size: 5px; line-h=
+eight: 5px;">=C2=AD</td> </tr></tbody></table></td> </tr><tr><td class=3D"r=
+10-c" align=3D"center"> <table cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" role=3D"presentation" width=3D"308" class=3D"r31-o" style=3D"table-l=
+ayout: fixed; width: 308px;"><tbody><tr><td height=3D"28" align=3D"center" =
+valign=3D"top" class=3D"r23-i nl2go-default-textstyle" style=3D"color: #3b3=
+f44; font-family: DM Sans,arial; font-size: 16px; line-height: 1.5; word-br=
+eak: break-word;">  <!--[if mso]> <v:roundrect xmlns:v=3D"urn:schemas-micro=
+soft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"htt=
+ps://r.mail.nosgestesclimat.fr/tr/cl/vY4Ml8X5K7PfVlZhgMP1EORrYxxsIfh5t1hpYW=
+RSAbeZXMha7wavuOGQu22qsmX69TyesD76dh6srNYA47fJzyQ_3k8JdMi20TlsItgYxmMOlmN3L=
+sodKBrGhUBWqXcCD-Bm0pSnm1qwonm1N2inwvTuhNv0k8lKA2C_savMCze_AfaN7ppdo1MbDyl4=
+F0IfMKrCukrPHcbMpR8q8ZY1eYiCjJZIj_uLmGoiLf9Bekf16KqmgSIH45eQzh8Uz1N8ovrw3iy=
+oZzuOtvi5yohlYWi3BobYGuKsKNxAKYqVoMIuOk85hH-ntyaoYf2dLNMCDzvt7ta69H95X3FxTk=
+H6JZXYWAOH8MqeZhzthus0kGtX029inN_kU9zLz1j67FP7fHwqjnFfvBVBvqgyaWwnLw" style=
+=3D"v-text-anchor:middle; height: 41px; width: 307px;" arcsize=3D"50%" fill=
+color=3D"#ffffff" strokecolor=3D"#ffffff" strokeweight=3D"1px" data-btn=3D"=
+3"> <w:anchorlock> </w:anchorlock> <v:textbox inset=3D"0,0,0,0"> <div style=
+=3D"display:none;"> <center class=3D"default-button"><span><span style=3D"c=
+olor:#4949ba;font-family:arial;"><u>Ou partager ce lien</u></span></span></=
+center> </div> </v:textbox> </v:roundrect> <![endif]-->  <!--[if !mso]><!--=
+ --> <a href=3D"https://r.mail.nosgestesclimat.fr/tr/cl/642Vcq0kfaPcTYK6UZb=
+ArgwA709J1xgLqIFQyGevhhRlrZ_oKvSJM2ZTejHTUfAUAw82nqR_8o4D1oZDlNtQ0nb9NS46qo=
+vdSqUPza3gp_bOFI2A8kspqMYEsSEa4fl_efoNcSZP3tgJ4_3BTuXTz4Dl5uZYto14OSjH6Cl8z=
+UlfdTB3cFe2Rmub6xdgdRJlAUXK-tmaH8WLICaYrRKJU7_ndUA1YODqvU5jlPZcPWA64TMdWPHY=
+KqFaEsf6V9Bp4JnVdp8LqWmsM2e6BTSX3ifgRdxdovClSkiOAsR5_r8utSC0r4Yri6lBiRb-4r5=
+Kbd3g9NZLUNma7fbYnklhbm8rfEDCc5DdexIhMGqO-NllILNq32cHycLP9dGpVG1qaM5XCwrs8J=
+HgNGYFy1l64g" class=3D"r32-r default-button" target=3D"_blank" title=3D"Par=
+tager Nos Gestes Climat" data-btn=3D"3" style=3D"font-style: normal; font-w=
+eight: bold; line-height: 1.15; text-decoration: none; word-break: break-wo=
+rd; border-style: solid; word-wrap: break-word; display: block; -webkit-tex=
+t-size-adjust: none; background-color: #ffffff; border-color: #ffffff; bord=
+er-radius: 100px; border-width: 0px; color: #ffffff; font-family: DM Sans, =
+arial; font-size: 16px; height: 28px; mso-hide: all; padding-bottom: 12px; =
+padding-top: 2px; width: 308px;"> <span><span style=3D"color: #4949ba; font=
+-family: arial;"><u>Ou partager ce lien</u></span></span></a> <!--<![endif]=
+--> </td> </tr><tr class=3D"nl2go-responsive-hide"><td height=3D"15" style=
+=3D"font-size: 15px; line-height: 15px;">=C2=AD</td> </tr></tbody></table><=
+/td> </tr><tr><td class=3D"r33-c nl2go-default-textstyle" align=3D"left" st=
+yle=3D"color: #3b3f44; font-family: DM Sans,arial; font-size: 16px; line-he=
+ight: 1.5; word-break: break-word; padding-bottom: 5px; padding-top: 15px; =
+text-align: left; valign: top;"> <div><p style=3D"margin: 0;"><span style=
+=3D"font-family: arial;"><strong>=F0=9F=91=8A Et maintenant, place =C3=A0 l=
+&#39;action !=C2=A0</strong></span></p><p style=3D"margin: 0;"><span style=
+=3D"font-family: arial;">Le calcul de votre empreinte carbone est la premi=
+=C3=A8re =C3=A9tape pour identifier </span><span style=3D"color: #4949ba; f=
+ont-family: arial;"><strong>les postes de r=C3=A9duction les plus efficaces=
+</strong></span><span style=3D"font-family: arial;"> ! Pour b=C3=A9n=C3=A9f=
+icier de nos conseils pour r=C3=A9duire votre empreinte : rendez-vous dans =
+la page Actions.</span></p></div> </td> </tr><tr><td class=3D"r10-c" align=
+=3D"center"> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=
+=3D"presentation" width=3D"308" class=3D"r31-o" style=3D"table-layout: fixe=
+d; width: 308px;"><tbody><tr><td height=3D"18" align=3D"center" valign=3D"t=
+op" class=3D"r23-i nl2go-default-textstyle" style=3D"color: #3b3f44; font-f=
+amily: DM Sans,arial; font-size: 16px; line-height: 1.5; word-break: break-=
+word;">  <!--[if mso]> <v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vm=
+l" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https://r.mail=
+.nosgestesclimat.fr/tr/cl/PA3c9MbbGgukDw3n-GWL_UmHXCrnOXXQkmSttg52kajbkw5Xy=
+hEvMVWkMsY1Q88GM32c5qxRj1gBBSUmzYNoKwfGVvYpY4gS6-vyXA_LuRZJsxWhoHJCF5oB-EfE=
+gynEQJIaXBOEZwucg--69PF06th0KJuteRsNxDVTpSQiPaeV46_yY1y46ltlRhPtvuExt0bfTNd=
+k7j896oNHUJvki4_KX1zEED1rMRfltZh8LFRsphOPC1xHvLH-0hqPiT1GTHUz6D_2qNr-iCXKAG=
+ODNwBflhIfStPwjTNg6syOEcR5hZ9HS7GyoxUSlx4GRfm8VJ850ZvcTk_OLrSqUWC2kVNi6YjP0=
+QnHMzA58P_p8EIgy4fs7CWpXD9ojxPFRH02xm8XsqXepZcS_QvBN_AxVh0S" style=3D"v-tex=
+t-anchor:middle; height: 41px; width: 307px;" arcsize=3D"50%" fillcolor=3D"=
+#ffffff" strokecolor=3D"#ffffff" strokeweight=3D"1px" data-btn=3D"4"> <w:an=
+chorlock> </w:anchorlock> <v:textbox inset=3D"0,0,0,0"> <div style=3D"displ=
+ay:none;"> <center class=3D"default-button"><span><span style=3D"color:#494=
+9ba;font-family:arial;"><u>Comment r=C3=A9duire mon empreinte ?</u></span><=
+/span></center> </div> </v:textbox> </v:roundrect> <![endif]-->  <!--[if !m=
+so]><!-- --> <a href=3D"https://r.mail.nosgestesclimat.fr/tr/cl/SjkEA7ZZ18g=
+uErviAZZoDMnrW-ikNcKQsWH4AgME1y5Ej4ZqdRkFzJTDmhH1qQAyjvZ3cbR-odG5biuFkdoEPF=
+uTaP7nr1DrEpfJIcUFkutcXXSMwUh65Tek48JP_MLlrXCe2m2iT8G8H0nVoJ2QZUqF0XrwfR3Ua=
+cxt8kVFvqy7Pw6Yin6hVJfE3W3gzYeLbLiDFhYvq6jXklqxtIfvpZYwCBYpvNkUubiTsgvMGMyI=
+4C9GlTJetm_6koh102wekv55ngXhhGfWOkiqVnNoayP7I1f9NiuBLYwsN8yHnk864ZttMxt91EE=
+rwn2svmwAvilOILBFwbRPv9Zc6Pbd3T0VDancqR3R9-2gbMJfH-hrgVCV3E8xwp6HJg3VC3Rb9j=
+QGWcS7olMX3m-353bVb8iW" class=3D"r34-r default-button" target=3D"_blank" ti=
+tle=3D"Comment r=C3=A9duire mon empreinte?" data-btn=3D"4" style=3D"font-st=
+yle: normal; font-weight: bold; line-height: 1.15; text-decoration: none; w=
+ord-break: break-word; border-style: solid; word-wrap: break-word; display:=
+ block; -webkit-text-size-adjust: none; background-color: #ffffff; border-c=
+olor: #ffffff; border-radius: 100px; border-width: 0px; color: #ffffff; fon=
+t-family: DM Sans, arial; font-size: 16px; height: 18px; mso-hide: all; pad=
+ding-bottom: 12px; padding-top: 12px; width: 308px;"> <span><span style=3D"=
+color: #4949ba; font-family: arial;"><u>Comment r=C3=A9duire mon empreinte =
+?</u></span></span></a> <!--<![endif]--> </td> </tr><tr class=3D"nl2go-resp=
+onsive-hide"><td height=3D"15" style=3D"font-size: 15px; line-height: 15px;=
+">=C2=AD</td> </tr></tbody></table></td> </tr><tr><td class=3D"r35-c nl2go-=
+default-textstyle" align=3D"left" style=3D"color: #3b3f44; font-family: DM =
+Sans,arial; font-size: 16px; line-height: 1.5; word-break: break-word; padd=
+ing-bottom: 15px; padding-top: 15px; text-align: left; valign: top;"> <div>=
+<p style=3D"margin: 0;"><span style=3D"font-family: arial;">A tr=C3=A8s vit=
+e !=C2=A0</span></p><p style=3D"margin: 0;">=C2=A0</p><p style=3D"margin: 0=
+;"><span style=3D"font-family: arial;">L&#39;=C3=A9quipe Nos Gestes Climat<=
+/span></p></div> </td> </tr></tbody></table></td> </tr></tbody></table></th=
+> </tr></tbody></table></td> </tr></tbody></table></td> </tr></tbody></tabl=
+e><table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentat=
+ion" width=3D"100%" align=3D"center" class=3D"r36-o" style=3D"background-co=
+lor: #ffefbc; background-image: url(&#39;https://img.mailinblue.com/2610165=
+/images/content_library/original/66e15dfb57fb927214d6051a.png&#39;); backgr=
+ound-position: center; background-repeat: no-repeat; background-size: auto;=
+ font-size: 0; table-layout: fixed; width: 100%;"><tbody><tr><td valign=3D"=
+top"> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"prese=
+ntation" width=3D"600" align=3D"center" class=3D"r3-o" style=3D"table-layou=
+t: fixed; width: 600px;"><tbody><tr><td class=3D"r37-i" style=3D"padding-bo=
+ttom: 20px; padding-top: 30px;"> <table width=3D"100%" cellspacing=3D"0" ce=
+llpadding=3D"0" border=3D"0" role=3D"presentation"><tbody><tr><th width=3D"=
+100%" valign=3D"top" class=3D"r5-c" style=3D"font-weight: normal;"> <table =
+cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" widt=
+h=3D"100%" class=3D"r6-o" style=3D"table-layout: fixed; width: 100%;"><tbod=
+y><tr><td valign=3D"top" class=3D"r7-i" style=3D"padding-left: 15px; paddin=
+g-right: 15px;"> <table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" =
+border=3D"0" role=3D"presentation"><tbody><tr><td class=3D"r18-c" align=3D"=
+left"> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"pres=
+entation" width=3D"100%" class=3D"r38-o" style=3D"table-layout: fixed; widt=
+h: 100%;"><tbody><tr><td align=3D"center" valign=3D"top" class=3D"r39-i nl2=
+go-default-textstyle" style=3D"color: #3b3f44; font-family: DM Sans,arial; =
+font-size: 16px; line-height: 1.5; word-break: break-word; text-align: cent=
+er;"> <div><p style=3D"margin: 0;"><span style=3D"font-family: arial;"><str=
+ong>=F0=9F=93=A3 Participez =C3=A0 l&#39;am=C3=A9lioration de Nos Gestes Cl=
+imat !=C2=A0</strong></span></p></div> </td> </tr><tr class=3D"nl2go-respon=
+sive-hide"><td height=3D"15" style=3D"font-size: 15px; line-height: 15px;">=
+=C2=AD</td> </tr></tbody></table></td> </tr><tr><td class=3D"r18-c" align=
+=3D"left"> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"=
+presentation" width=3D"100%" class=3D"r19-o" style=3D"table-layout: fixed; =
+width: 100%;"><tbody><tr><td align=3D"center" valign=3D"top" class=3D"r40-i=
+ nl2go-default-textstyle" style=3D"color: #3b3f44; font-family: DM Sans,ari=
+al; font-size: 16px; word-break: break-word; line-height: 1.5; text-align: =
+center;"> <div><p style=3D"margin: 0;"><span style=3D"font-family: arial; f=
+ont-size: 14px;">Nos Gestes Climat lance sa premi=C3=A8re communaut=C3=A9 d=
+e testeurs et testeuses !=C2=A0</span><br/><span style=3D"font-family: aria=
+l; font-size: 14px;">Rejoignez-la et participez =C3=A0 l=E2=80=99am=C3=A9li=
+oration de notre site !</span></p></div> </td> </tr></tbody></table></td> <=
+/tr><tr><td class=3D"r10-c" align=3D"center"> <table cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0" role=3D"presentation" width=3D"342" class=3D"r22=
+-o" style=3D"table-layout: fixed; width: 342px;"><tbody><tr class=3D"nl2go-=
+responsive-hide"><td height=3D"15" style=3D"font-size: 15px; line-height: 1=
+5px;">=C2=AD</td> </tr><tr><td height=3D"18" align=3D"center" valign=3D"top=
+" class=3D"r23-i nl2go-default-textstyle" style=3D"color: #3b3f44; font-fam=
+ily: DM Sans,arial; font-size: 16px; line-height: 1.5; word-break: break-wo=
+rd;">  <!--[if mso]> <v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml"=
+ xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https://r.mail.n=
+osgestesclimat.fr/tr/cl/G9g24rJwRw8iU-PIOHYjhL4F8X88surWeGvXGqVFU8lvCvjwgn6=
+feMBjLoGSDX68XJfdoPnJ2UEpUjNkis-D89yZh2Rm7cSt0E72MecN93OgXpg3uWWY92J9dutVIx=
+HyL_NlBWr-vUXiALnRA4MlqIkqI5-cALQ-v2bHKQp9eFY4063tQd8iwOB0vPXjU_JPf8oMib3H0=
+PHLr2E9bbiNMPDvFNBU00TOEaLOCe0wBO8KiDvUPzURcldccd49ip35FKplN4rE-ZtmlZa5wNUR=
+BInmpBLBxqgA2f7_GkdcmuB4uEivTvkFqcSlffhiRCRjDH_k1dYy2lTaTTIRvLipLAxWg-q3_LP=
+oQzOs1QEbv7dbPNwA0UJPO_giiFZK17WKX4QrBr1NMVoJVIKYq1W1oScu3VmhFGt0e6JGZ15vSb=
+Bc6kASpMLXxOzgXe9CEgRrF6-7Mpe4I0S-m1Wg5NkL2Gxanv16ZxVWUlffONoxw1oKTL_pprcPH=
+QDrTkxxzjnBoHYR9nGy4LESkqdiujwY-fTQPj_HJgv5uA7iZziLB-XWihMm7_QpcJtPSpE" sty=
+le=3D"v-text-anchor:middle; height: 41px; width: 341px;" arcsize=3D"50%" fi=
+llcolor=3D"#4949ba" strokecolor=3D"#4949ba" strokeweight=3D"1px" data-btn=
+=3D"5"> <w:anchorlock> </w:anchorlock> <v:textbox inset=3D"0,0,0,0"> <div s=
+tyle=3D"display:none;"> <center class=3D"default-button"><span><span style=
+=3D"font-family:arial;"><strong>Je rejoins la communaut=C3=A9 de testeurs</=
+strong></span></span></center> </div> </v:textbox> </v:roundrect> <![endif]=
+-->  <!--[if !mso]><!-- --> <a href=3D"https://r.mail.nosgestesclimat.fr/tr=
+/cl/7hLfQxZJfipK4Do2UjqPMmwHsaEGngjADF04UTk_x9rlSREjjpKFvSzUKO-01suTdF0E2f1=
+MTfP1XhQthLCv6IBFM_llbLiucjrJGAx2_cD32hrqCkE2K2gFTmYzR3lKP_r-K2ztqz0ej4_2-N=
+dGoR4AGlaMBiQaqoUzl60XrTMyeTugbrVSG6CuS31SKp6Na1k4ouTV5R_qLbtoIrarDf-IlX4Ig=
+P_AbnPR0KzqI08edRKc1YRvJspsoA8xcVvK6KX4N0tFnIXF4VSTONZRd08TNAgMAq1GYEj44GUJ=
+FoWkAn1VsBCDFSLhcFSy0VM1Wphz7OaTpPAjq12m09R9yYP7mR1ekxytLH-jlrYMOb-sB_lfXMW=
+KJWQe4dCaYSaTU6zCdaLvePmk6Q-meOcFKlJ6h5OZyBRJKiGpMrV3XjX9LZZeX5xBPDPHjLidX9=
+oWa908_eFmwmYofY3DnrerCr_bljKQlkw-sRY5dd7K2tulJhMoV1e_-mE2CJlLW9D8aDg7A5VM1=
+MbSWI5Gtk6xsSgOh69vHtB-WbfAeF7MnndcYFhiyJ7difWLKtk" class=3D"r41-r default-=
+button" target=3D"_blank" title=3D"Participez =C3=A0 l&#39;am=C3=A9lioratio=
+n de NGC !" data-btn=3D"5" style=3D"font-style: normal; font-weight: bold; =
+line-height: 1.15; text-decoration: none; word-break: break-word; border-st=
+yle: solid; word-wrap: break-word; display: block; -webkit-text-size-adjust=
+: none; background-color: #4949ba; border-color: #4949ba; border-radius: 10=
+0px; border-width: 0px; color: #ffffff; font-family: DM Sans, arial; font-s=
+ize: 16px; height: 18px; mso-hide: all; padding-bottom: 12px; padding-top: =
+12px; width: 342px;"> <span><span style=3D"font-family: arial;"><strong>Je =
+rejoins la communaut=C3=A9 de testeurs</strong></span></span></a> <!--<![en=
+dif]--> </td> </tr><tr class=3D"nl2go-responsive-hide"><td height=3D"15" st=
+yle=3D"font-size: 15px; line-height: 15px;">=C2=AD</td> </tr></tbody></tabl=
+e></td> </tr></tbody></table></td> </tr></tbody></table></th> </tr></tbody>=
+</table></td> </tr></tbody></table></td> </tr></tbody></table><table cellsp=
+acing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation" width=3D"6=
+00" align=3D"center" class=3D"r3-o" style=3D"table-layout: fixed; width: 60=
+0px;"><tbody><tr><td valign=3D"top" class=3D"r9-i" style=3D"background-colo=
+r: #f7fbff;"> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=
+=3D"presentation" width=3D"100%" align=3D"center" class=3D"r0-o" style=3D"t=
+able-layout: fixed; width: 100%;"><tbody><tr><td class=3D"r11-i" style=3D"b=
+ackground-color: #f7fbff; color: #3b3f44; font-family: arial,helvetica,sans=
+-serif; font-size: 16px; padding-bottom: 20px; padding-top: 20px;"> <table =
+width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"pre=
+sentation"><tbody><tr><th width=3D"100%" valign=3D"top" class=3D"r5-c" styl=
+e=3D"font-weight: normal;"> <table cellspacing=3D"0" cellpadding=3D"0" bord=
+er=3D"0" role=3D"presentation" width=3D"100%" class=3D"r6-o" style=3D"table=
+-layout: fixed; width: 100%;"><tbody><tr><td valign=3D"top" class=3D"r12-i"=
+ style=3D"color: #3b3f44; font-family: arial,helvetica,sans-serif; font-siz=
+e: 16px; padding-left: 15px; padding-right: 15px;"> <table width=3D"100%" c=
+ellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentation"><tbod=
+y><tr><td class=3D"r42-c nl2go-default-textstyle" align=3D"center" style=3D=
+"word-break: break-word; color: #3b3f44; font-family: arial,helvetica,sans-=
+serif; font-size: 18px; line-height: 1; padding-top: 15px; text-align: cent=
+er; valign: top;"> <div><p style=3D"margin: 0;"><span style=3D"font-family:=
+ Arial; font-size: 12px;">Nos Gestes Climat</span></p><p style=3D"margin: 0=
+;"><span style=3D"font-family: Arial; font-size: 12px;">155 bis avenue Pier=
+re Brossolette, 92120, Montrouge</span></p></div> </td> </tr><tr><td class=
+=3D"r43-c nl2go-default-textstyle" align=3D"center" style=3D"word-break: br=
+eak-word; color: #3b3f44; font-family: arial,helvetica,sans-serif; font-siz=
+e: 18px; line-height: 1.5; padding-top: 10px; text-align: center; valign: t=
+op;"> <div><p style=3D"margin: 0; font-size: 14px;"><span style=3D"font-fam=
+ily: Arial; font-size: 12px;">Cet=C2=A0email a =C3=A9t=C3=A9 envoy=C3=A9 =
+=C3=A0=C2=A0tarik@carbonable.io</span><span style=3D"font-size: 12px;">. Vo=
+us avez re=C3=A7u ce message car vous avez demand=C3=A9 =C3=A0 recevoir vos=
+ r=C3=A9sultats d&#39;empreinte carbone sur Nos Gestes Climat.=C2=A0</span>=
+</p></div> </td> </tr><tr><td class=3D"r44-c nl2go-default-textstyle" align=
+=3D"center" style=3D"word-break: break-word; color: #3b3f44; font-family: a=
+rial,helvetica,sans-serif; font-size: 18px; line-height: 1.5; padding-botto=
+m: 10px; padding-top: 10px; text-align: center; valign: top;"> <div><p styl=
+e=3D"margin: 0; font-size: 14px;"><a href=3D"https://r.mail.nosgestesclimat=
+.fr/tr/un/DJhwQcEmo1eoZx-OZLqr1VXHpEhk1ZBrvbA3pALlj1LyVuDyjfDPY8NalXHZhOSkG=
+RCvKMZuM7RAmAKVf8302nQzR_UusqOjnWt5YntpI1GdIxX4ireTwwv07ZL6ZRJWGrukVtTHPRT8=
+59Cx5q-IxT8Qi1d9BJWquFy_xM4H_uF-_KsOBKfXahp8zBT6byg2ZTHKfNCBwyNJpe3FO8IvJc1=
+-B3qIhHrdtKH3NgL-Ll8C7xJJ0VGN8BDEBZ7VYKtaL0-fiD2uuF6PCXTBbnd9RVJMFJWYoctDOX=
+t4OXk" style=3D"color: #4949ba; text-decoration: underline;"><span style=3D=
+"font-family: &#39;dm sans&#39;, arial; font-size: 12px;">Se d=C3=A9sinscri=
+re</span></a></p></div> </td> </tr><tr><td class=3D"r10-c" align=3D"center"=
+> <table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" role=3D"presentat=
+ion" width=3D"142" class=3D"r0-o" style=3D"table-layout: fixed; width: 142p=
+x;"><tbody><tr><td class=3D"r45-i" style=3D"color: #3b3f44; font-family: ar=
+ial,helvetica,sans-serif; font-size: 0px; line-height: 0px; padding-bottom:=
+ 10px; padding-top: 10px;"> <a href=3D"https://r.mail.nosgestesclimat.fr/tr=
+/cl/Kk4X0CmrfWQkA11yStHk6C7KbKBOKyDVxhbCdsMSZSAQ0szuh2G4jm8PMPnXlKbNDzYo3Lq=
+x0w_Xocbq8ydbaT6sSLbS-FGI4mDQD6PSbfhGnyZiqEItyROILEix6NImPqXJ9uKSdh0rxELU-i=
+X9LVBFOMeeOcS_beRcJ3Sv4mnAlLip0QaHoK8B27a0eBz9RfM_i7Ec46OnDeyRXToLnZF9ZbemN=
+uqk1FA4OERJr0iCBxjr4HHoi59P-L3avxXP4RqBBJ2tOVG17x1TgcsFOh1ZPvxvMMTMSWrXewSU=
+l-rrrg" target=3D"_blank" style=3D"color: #4949ba; text-decoration: underli=
+ne;"> <img src=3D"https://r.mail.nosgestesclimat.fr/im/2610165/cb71888deb02=
+b5bdb877300cd5121329e5f8f9f535ed05e71331bb6df7c80c64.png?e=3DgQfk7aUsj_-lhV=
+gIkxqbo32UnCxUuQ8cql6SwTFzipCK5TLOszDgpsSw0pMEoAjudJb-HiUn_Oxvq5irSlyQ2-SCI=
+4iyGQqNOArdvstK3I3Kbzm8YPa-Of-HmtJE8nP8Xuw1Orwo0d3m16AmRZ6cJus3Ts6gSWGn-3GF=
+i4RA_qR0F-_LSOG28zbPigAFGquREM_B3_XLW-pkq6uDCWPWad8paYdfs2rKHZhQ408XrePh-nX=
+pxese3T9nmyrxci3v2SZFNCJLGDdOjhaydcX1JsSX9uibuxbsCM2ljRuyAdBYrxmCF8EmYLAyMQ=
+gmzR0X4Q" width=3D"142" title=3D"Le site de l&#39;ADEME (agence de la trans=
+ition =C3=A9cologique)" border=3D"0" style=3D"display: block; width: 100%;"=
+/></a> </td> </tr></tbody></table></td> </tr></tbody></table></td> </tr></t=
+body></table></th> </tr></tbody></table></td> </tr></tbody></table></td> </=
+tr></tbody></table></td> </tr></tbody></table>
+</body></html>
+
+----_SiB-2c7ff9cca165ef21-Part_1--
+

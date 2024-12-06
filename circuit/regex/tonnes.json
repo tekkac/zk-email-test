@@ -1,0 +1,1 @@
+{"parts":[{"is_public":false,"regex_def":"Votre empreinte carbone\\*\\* \\*\\*annuelle\\*\\* \\*\\*estim=C3=A9e\\*=\\r\\n\\* est de : \\*\\*"},{"is_public":true,"regex_def":"[0-9,]+"}]}
